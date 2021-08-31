@@ -9,8 +9,9 @@ function crearMascota(req, res) {
 }
 
 function obtenerMascota(req, res) {
-    var mascota = new Mascota(2, 'Loki', 'perro', 'www.loki.com', 'Cachorro Sharpei', 'Rachel', 'Veracruz')
-    res.send(mascota)
+    var mascota1 = new Mascota(2, 'Loki', 'perro', 'www.loki.com', 'Cachorro Sharpei', 'Rachel', 'Veracruz')
+    var mascota2 = new Mascota(2, 'Oddie', 'perro', 'www.Oddie.com', 'Cachorro Golden', 'Jaky', 'Veracruz')
+    res.send(mascota1, mascota2)
 }
 
 function modificarMascota(req, res) {
@@ -24,7 +25,7 @@ function modificarMascota(req, res) {
 }
 
 function eliminarMascota(req, res) {
-    res.status(200).send(`Mascota ${req.params.id} eliminado`);
+    res.status(200).send(`Mascota ${req.params.id} eliminada`);
 }
 
 module.exports = {
