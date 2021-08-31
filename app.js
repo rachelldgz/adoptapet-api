@@ -9,7 +9,11 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-//Servidor​
+//Configuración de rutas
+
+app.use('/v1', require('./routes'))
+
+//Iniciando Servidor​
 const PORT = 4001;
 app.listen(PORT, () => {
     console.log('ITS ALIVE!!! Server listening on port ${PORT}')
