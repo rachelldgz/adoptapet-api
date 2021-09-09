@@ -9,8 +9,17 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-//Configuración de rutas
+//configuración de base de datos
+const mongoose = require('mongoose');
+mongoose.connect("mongodb+srv://rachydgz:metallica@cluster0.fl8w4.mongodb.net/adoptpet?retryWrites=true&w=majority");
+mongoose.set("debug", true);
 
+require('./models/Usuario');
+require('./models/Mascota');
+require('./models/Solicitud');
+
+
+//Configuración de rutas
 app.use('/v1', require('./routes'))
 
 //Iniciando Servidor​
