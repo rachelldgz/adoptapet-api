@@ -11,5 +11,6 @@ router.get('/', obtenerMascota)
 router.post('/', crearMascota)
 router.put('/:id', modificarMascota)
 router.delete('/:id', eliminarMascota)
+router.get('/count/:cat', count);
 
 module.exports = router;

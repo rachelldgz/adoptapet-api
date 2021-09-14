@@ -11,7 +11,10 @@ app.use(bodyParser.json());
 
 //configuración de base de datos
 const mongoose = require('mongoose');
-mongoose.connect("mongodb+srv://rachydgz:metallica@cluster0.fl8w4.mongodb.net/adoptpet?retryWrites=true&w=majority");
+mongoose.connect(
+    "<CREDENCIALES DE DB>"
+);
+
 mongoose.set("debug", true);
 
 require('./models/Usuario');

@@ -59,9 +59,20 @@ function eliminarMascota(req, res) {
     })
 }
 
+function count(req,res,next) {
+  var categoria = req.params.cat
+  Mascota.aggregate([
+    {'$match': { 'categoria': categoria}}, 
+    {'$count': 'total'}
+  ]).then(r => {
+    res.status(200).send(r)
+  })
+}
+
 module.exports = {
     crearMascota,
     obtenerMascota,
     modificarMascota,
-    eliminarMascota
+    eliminarMascota,
+     count
 }
