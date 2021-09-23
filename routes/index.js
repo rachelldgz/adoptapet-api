@@ -10,5 +10,9 @@ router.use('/usuarios', require('./usuarios'));
 
 router.use('/mascotas', require('./mascotas'));
 
+router.use('/solicitudes', require('./solicitudes'));
+
+
+
 // exportamos nuestro nuevo router
 module.exports = router;

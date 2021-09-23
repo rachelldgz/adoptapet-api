@@ -1,32 +1,38 @@
-//Express
+// Express
 const express = require('express');
 const app = express();
 
-//Body Parser​
+//Body Parser
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
 
-//configuración de base de datos
+// Configuración de base de datos
 const mongoose = require('mongoose');
+
 mongoose.connect(
-    "<CREDENCIALES DE DB>"
+    process.env.MONGODB_URI, // obtiene la url de conexión desde las variables de entorno
+    {
+        useUnifiedTopology: true,
+        useNewUrlParser: true,
+        useCreateIndex: true
+    }
 );
 
-mongoose.set("debug", true);
+mongoose.set("debug", true)
 
-require('./models/Usuario');
-require('./models/Mascota');
-require('./models/Solicitud');
+require('./models/Usuario')
+require('./models/Mascota')
 
+require('./config/passport')
 
-//Configuración de rutas
-app.use('/v1', require('./routes'))
+//Rutas
+app.use('/v1', require('./routes'));
 
-//Iniciando Servidor​
-const PORT = 4001;
-app.listen(PORT, () => {
-    console.log('ITS ALIVE!!! Server listening on port ${PORT}')
+// Iniciando el servidor
+
+app.listen(process.env.PORT, () => {
+    console.log(`Server listening on port ${process.env.PORT}`)
 })
